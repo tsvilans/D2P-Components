@@ -64,7 +64,7 @@ namespace D2P_Core.Utility
             return doc.Objects.FindByFilter(filter).Select(rhObj => rhObj.Id);
         }
 
-        public static IEnumerable<RhinoObject> ObjectsByGroup(int grpIdx, RhinoDoc doc) => doc.Groups.GroupMembers(grpIdx);
+        public static IEnumerable<RhinoObject> ObjectsByGroup(int grpIdx, RhinoDoc doc) => doc.Objects.FindByGroup(grpIdx);
         public static IEnumerable<RhinoObject> ObjectsByGroup(int grpIdx, Layer layer, RhinoDoc doc) => ObjectsByGroup(grpIdx, doc).Where(rh => rh.Attributes.LayerIndex == layer?.Index);
 
         public static int DeleteObjects(IComponent component, Layer layer)
