@@ -63,7 +63,7 @@ namespace D2P_Core.Utility
             foreach (var obj in allObjects)
             {
                 var componentType = new ComponentType(obj, settings);
-                instances.Add(new Component(componentType, obj.Id));
+                instances.Add(new Component(componentType, obj.Id) { ActiveDoc = doc });
             }
             instances.Sort((x, y) => string.Compare(x.ShortName, y.ShortName));
             return instances;
