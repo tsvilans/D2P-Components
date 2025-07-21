@@ -2,6 +2,7 @@
 using Rhino;
 using Rhino.DocObjects;
 using Rhino.Geometry;
+using Rhino.UI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,8 +19,8 @@ namespace D2P_Core.Utility
         }
 
         public static string ComponentTypeIDFromObject(RhinoObject obj, Settings settings) => obj.Name.Split(settings.TypeDelimiter).FirstOrDefault();
-        public static string ComponentTypeNameFromObject(RhinoObject obj, Settings settings) => Layers.GetComponentTypeName(obj, settings);
-        public static Color ComponentTypeLayerColorFromObject(RhinoObject obj, Settings settings) => Layers.GetComponentTypeRootLayer(obj, settings).Color;
+        public static string ComponentTypeNameFromObject(RhinoObject obj, Settings settings, RhinoDoc doc = null) => Layers.GetComponentTypeName(obj, settings, doc);
+        public static Color ComponentTypeLayerColorFromObject(RhinoObject obj, Settings settings, RhinoDoc doc = null) => Layers.GetComponentTypeRootLayer(obj, settings, doc).Color;
 
         public static IEnumerable<T> ObjectsByLayer<T>(int layerIdx, IComponent component, LayerScope layerScope) where T : GeometryBase
         {

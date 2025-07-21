@@ -62,8 +62,8 @@ namespace D2P_Core.Utility
             var instances = new List<IComponent>();
             foreach (var obj in allObjects)
             {
-                var componentType = new ComponentType(obj, settings);
-                instances.Add(new Component(componentType, obj.Id));
+                var componentType = new ComponentType(obj, settings, doc);
+                instances.Add(new Component(componentType, obj.Id, doc));
             }
             instances.Sort((x, y) => string.Compare(x.ShortName, y.ShortName));
             return instances;
